@@ -1,5 +1,9 @@
 package fp.daw.examen;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Ejercicio2 {
 
 	/*
@@ -19,7 +23,50 @@ public class Ejercicio2 {
 	 */
 	
 	public static void main(String[] args) {
+		int suma = 0;
+		int inicio = 0;
+		int fin = 0;
+		int mayor = 0;
+		int menor = 0;
 		
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		
+		System.out.println("Introduzca el primer número para hacer la suma");
+		try {
+			inicio = Integer.valueOf(br.readLine());
+			
+			System.out.println("Introduzca el segundo número para hacer la suma");
+			fin = Integer.valueOf(br.readLine());
+			
+			if (inicio > fin) {
+				menor = fin;
+				mayor = inicio;
+			} else {
+				menor = inicio;
+				mayor = fin;
+			}
+			
+			int contador = menor;
+			
+			do {
+				if (contador % 2 != 0) {
+					suma = suma + contador;
+				}
+				
+				contador ++;
+			} while (contador < mayor);
+			
+			suma = suma + mayor;
+			
+			System.out.println("La suma de los números impares entre " + menor + " y " + mayor + " es " + suma);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
